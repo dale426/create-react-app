@@ -1,8 +1,12 @@
-import React from "react";
+import React from 'react'
+import { useParams } from 'react-router-dom'
 export default () => {
+  const { id } = useParams()
   return (
     <>
-      <h2>this is dashboard</h2>
+      <p>
+        组件中获取到的 url参数为: <strong>{id}</strong>
+      </p>
     </>
-  );
-};
+  )
+}
