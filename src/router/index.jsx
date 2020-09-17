@@ -1,6 +1,10 @@
-import React from "react";
-import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
-import Dashboard from "../pages/Dashboard";
+import React from 'react'
+import { BrowserRouter, Route, Link, Switch } from 'react-router-dom'
+import Dashboard from '../pages/Dashboard'
+import ReactDom from '../pages/ReactDom'
+import RenderProp from '../pages/RenderProp'
+import UrlParamsRoute from './url-params'
+
 export default function RoutesPage() {
   return (
     <>
@@ -14,6 +18,15 @@ export default function RoutesPage() {
           <li>
             <Link to="/dashboard">Dashboard</Link>
           </li>
+          <li>
+            <Link to="/url-params">url-params</Link>
+          </li>
+          <li>
+            <Link to="/react-dom">react-dom</Link>
+          </li>
+          <li>
+            <Link to="/render-prop">render-prop</Link>
+          </li>
         </ul>
         {/* 路由组件加载 */}
         <Switch>
@@ -21,12 +34,23 @@ export default function RoutesPage() {
           <Route exact path="/">
             <h3>home 路由 /</h3>
           </Route>
+          <Route exact path="/url-params">
+            <UrlParamsRoute />
+          </Route>
           <Route path="/dashboard">
-            <span>路由 dashboard</span>
             <Dashboard />
           </Route>
+          <Route path="/render-prop">
+            <RenderProp />
+          </Route>
+          <Route
+            path="/react-dom"
+            render={(props) => {
+              return <ReactDom {...props}/>
+            }}
+          ></Route>
         </Switch>
       </BrowserRouter>
     </>
-  );
+  )
 }
