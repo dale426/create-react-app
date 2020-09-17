@@ -2,7 +2,8 @@ import React from 'react'
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom'
 import Dashboard from '../pages/Dashboard'
 import ReactDom from '../pages/ReactDom'
-import RenderProp from '../pages/RenderProp'
+import ForwardRefs from '../pages/forward-refs/ForwardRefs'
+import RenderProp from '../pages/render-prop/RenderProp'
 import UrlParamsRoute from './url-params'
 
 export default function RoutesPage() {
@@ -27,6 +28,9 @@ export default function RoutesPage() {
           <li>
             <Link to="/render-prop">render-prop</Link>
           </li>
+          <li>
+            <Link to="/refs">转发refs</Link>
+          </li>
         </ul>
         {/* 路由组件加载 */}
         <Switch>
@@ -42,6 +46,9 @@ export default function RoutesPage() {
           </Route>
           <Route path="/render-prop">
             <RenderProp />
+          </Route>
+          <Route path="/refs">
+            <ForwardRefs />
           </Route>
           <Route
             path="/react-dom"

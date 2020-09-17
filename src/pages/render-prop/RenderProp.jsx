@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
-import Mouse from './render-prop/Mouse'
-import Cat from './render-prop/Cat'
+import Mouse from './Mouse'
+import Cat from './Cat'
 export default () => {
   /**
    * catFn  放在实例中，组件更新时，render指向的始终是相同的函数
