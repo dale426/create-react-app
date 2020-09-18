@@ -4,11 +4,16 @@ import HocInput from './HocInput'
 
 const ForwardRefs = () => {
   const [input, setInput] = useState(null)
+  const [hocVal, setHocVal] = useState(null)
   const cRef = useRef()
   const dRef = useRef()
   const getRefs = () => {
-    console.log('cRef:::', cRef)
+    console.log('组件转发的ref:::', cRef)
     setInput(cRef.current.value)
+  }
+  const getHocRefs = () => {
+    console.log('获取高阶组件转发的ref:::', dRef)
+    setHocVal(dRef.current.value)
   }
   return (
     <>
@@ -21,8 +26,17 @@ const ForwardRefs = () => {
       </p>
       <hr />
       {/* hoc高阶函数转发refs */}
-      <p>hoc高阶函数转发refs</p>
-      <HocInput ref={dRef}>密码(必填)</HocInput>
+      <h2>--hoc高阶函数转发refs</h2>
+      <p>
+        -----start----通过高阶组件转发的的refs，
+        通过该refs获取input输入的值-----start----
+      </p>
+      <button onClick={getHocRefs}>获取下面高阶输入框中的值</button>：
+      <strong>{hocVal}</strong>
+      <p>---------------end--------------------</p>
+      <HocInput size={20} name="hocCom" ref={dRef}>
+        密码(必填)
+      </HocInput>
     </>
   )
 }
